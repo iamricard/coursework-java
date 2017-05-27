@@ -11,14 +11,10 @@ import java.util.concurrent.CompletionStage;
  * This controller contains an action to handle HTTP requests
  * to the application's home page.
  */
-public class HomeController extends Controller {
+public class ApplicationController extends Controller {
   private static QuizService service = new QuizService();
 
-  public Result index() {
-    return ok(index.render("Your new application is ready."));
-  }
-
-  public CompletionStage<Result> quiz() {
+  public CompletionStage<Result> index() {
     return service
       .fetch()
       .thenApply(response -> ok(quiz.render(response)));
