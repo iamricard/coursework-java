@@ -17,6 +17,7 @@ body {
 .container {
   width: 100%;
   height: 100%;
+  display: flex;
 }
 
 .question-container {
@@ -76,4 +77,15 @@ input[type="radio"] {
 
 .show {
   display: flex;
+}
+
+.result {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+  border: 1rem solid #247C85;
+  text-transform: uppercase;
+  font-size: 2.5rem;
 }
