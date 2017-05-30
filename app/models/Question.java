@@ -7,12 +7,19 @@ import java.util.Collections;
 import java.util.List;
 
 public class Question {
-  @JsonProperty("question") public String text;
+  @JsonProperty("question")
+  public String text;
+
   public String category;
   public String type;
   public String difficulty;
-  @JsonProperty("correct_answer") public String correctAnswer;
-  @JsonProperty("incorrect_answers") public List<String> incorrectAnswers;
+
+  @JsonProperty("correct_answer")
+  public String correctAnswer;
+
+  @JsonProperty("incorrect_answers")
+  public List<String> incorrectAnswers;
+
   private List<String> options = new ArrayList<>();
 
   public List<String> options() {

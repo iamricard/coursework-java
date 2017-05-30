@@ -6,9 +6,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 import java.util.List;
 
-@JsonIgnoreProperties({ "response_code" })
+@JsonIgnoreProperties({"response_code"})
 public class Quiz {
-  @JsonProperty("results") public List<Question> questions;
+  @JsonProperty("results")
+  public List<Question> questions;
 
   public List<Integer> correctAnswers() {
     List<Integer> answers = new ArrayList<>();
