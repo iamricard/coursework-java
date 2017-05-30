@@ -1,8 +1,6 @@
 package services;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import models.Question;
 import models.Quiz;
 import play.libs.ws.WS;
 import play.libs.ws.WSResponse;
