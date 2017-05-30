@@ -11,21 +11,19 @@ import views.html.result;
 import java.util.List;
 import java.util.concurrent.CompletionStage;
 
-/**
- * This controller contains an action to handle HTTP requests
- * to the application's home page.
- */
+/** This controller contains an action to handle HTTP requests to the application's home page. */
 public class ApplicationController extends Controller {
   private static QuizService service = new QuizService();
 
   public CompletionStage<Result> index() {
     final Http.Context ctx = ctx();
     return service
-      .fetch()
-      .thenApply(r -> {
-        storeSession(r, ctx);
-        return ok(quiz.render(r));
-      });
+        .fetch()
+        .thenApply(
+            r -> {
+              storeSession(r, ctx);
+              return ok(quiz.render(r));
+            });
   }
 
   public Result show() {
@@ -43,10 +41,7 @@ public class ApplicationController extends Controller {
   }
 
   private String joinAnswers(List<Integer> answers) {
-    return answers
-      .stream()
-      .map(Object::toString)
-      .reduce("", (acc, x) -> acc + x);
+    return answers.stream().map(Object::toString).reduce("", (acc, x) -> acc + x);
   }
 
   private void storeSession(Quiz q, Http.Context ctx) {

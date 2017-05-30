@@ -15,19 +15,19 @@ public class QuizService {
   private ObjectMapper mapper = new ObjectMapper();
 
   public CompletionStage<Quiz> fetch() {
-    return WS
-      .url(this.HOST)
-      .setQueryParameter("amount", "10")
-      .setQueryParameter("type", "multiple")
-      .setContentType("application/json")
-      .get()
-      .thenApply((WSResponse response) -> {
-        try {
-          return this.mapper.readValue(response.asJson().toString(), Quiz.class);
-        } catch (IOException e) {
-          e.printStackTrace();
-          return new Quiz();
-        }
-      });
+    return WS.url(this.HOST)
+        .setQueryParameter("amount", "10")
+        .setQueryParameter("type", "multiple")
+        .setContentType("application/json")
+        .get()
+        .thenApply(
+            (WSResponse response) -> {
+              try {
+                return this.mapper.readValue(response.asJson().toString(), Quiz.class);
+              } catch (IOException e) {
+                e.printStackTrace();
+                return new Quiz();
+              }
+            });
   }
 }
