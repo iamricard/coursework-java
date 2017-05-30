@@ -1,4 +1,6 @@
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 html, body {
   padding: 0;
@@ -41,6 +43,7 @@ body {
   text-transform: uppercase;
   border: 1px solid #247C85;
   margin: 1rem;
+  padding: 1rem;
 }
 
 .options {
@@ -53,8 +56,14 @@ body {
 
 .option-container {
   display: flex;
-  flex: 1 0 50%;
+  flex: 1 0 100%;
   padding: 1rem;
+}
+
+@media (min-width: 768px) {
+  .option-container {
+    flex: 1 0 50%;
+  }
 }
 
 .option {
