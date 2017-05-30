@@ -1,12 +1,12 @@
 package controllers;
 
-import com.google.inject.Inject;
 import models.Quiz;
-import play.libs.concurrent.HttpExecutionContext;
-import play.mvc.*;
-
+import play.mvc.Controller;
+import play.mvc.Http;
+import play.mvc.Result;
 import services.QuizService;
-import views.html.*;
+import views.html.quiz;
+import views.html.result;
 
 import java.util.List;
 import java.util.concurrent.CompletionStage;
@@ -16,7 +16,6 @@ import java.util.concurrent.CompletionStage;
  * to the application's home page.
  */
 public class ApplicationController extends Controller {
-  @Inject private HttpExecutionContext ec;
   private static QuizService service = new QuizService();
 
   public CompletionStage<Result> index() {
