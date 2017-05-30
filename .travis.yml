@@ -1,0 +1,10 @@
+language: java
+jdk:
+  - oraclejdk8
+deploy:
+  provider: heroku
+  api_key:
+    secure: ZMBTrG0OTlXsvMxSBmZ8FbmYO9lyygi2ylONNJjPkdm1xq6+6A0KzYzQiFmC3QxoZ05lCsb2xbsSM9aW0FjfeNAto5RfA5yTw0I6n2FmCtWW1fTRM8FsoU5hG7PZXSK60SDmvfA3N9sDqiFCty9aGD+6VqH86Ky+GtbcDC32ZxESj2Zv/Pgl/6qpUHC2Wt379Wcaq7iiIuilIIKk5FQRUxCQGBajCZyqxjVYkGI3Sf53psc8mA7LN5AiydSYzUqi4TCM86avbnyc+1Y0BXqnQ0l1kgOADfFUnr+9TBql2vFObLsqaHo04txU+sjrwvppO8lObSv3aQXRVjB7L+97JotvDsz3Uf9zp44nVy33Ao9ZZ8vyvwxKfONam7Zv5R/jfNIC6ryPg+ODD/JdSUqgsZF+Ct1lFn+UtMU32dw95UeTSaZL8FxWdHSgYtsxc0PzzkfOkjEvWDJTLOaBuI0xjofsW9A5shqtLMF4SZCronKBI1vUOCHbD5PCC/eWf4+EvnRPWG8NZA89KT8+sOPCyidpA9AangZnWzV/Axh2tgxiwK6bDCeeMn+R6z5ZPq1EQeu6lsvGtbwqrMWtPFL7oGojdDOLveULc7cFMc/YtijqKsszS5jWrAVRwgAeZZvL9Kdpf3rzrp/zo2x3/qgY02+JHwsggpOYaxwBaFWoJKM=
+  app: ancient-springs-90673
+  on:
+    repo: rcsole/coursework-java
