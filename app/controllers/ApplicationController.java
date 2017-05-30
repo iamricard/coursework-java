@@ -34,10 +34,10 @@ public class ApplicationController extends Controller {
 
     String[] correctAnswers = session("correctAnswers").split("");
     String[] userAnswers = request().getQueryString("answers").split("");
-    int score = 10;
+    int score = 100;
 
     for (int idx = 0; idx < correctAnswers.length; idx++) {
-      if (!correctAnswers[idx].equals(userAnswers[idx])) score -= 1;
+      if (!correctAnswers[idx].equals(userAnswers[idx])) score -= 10;
     }
 
     return ok(result.render(score));
