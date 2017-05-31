@@ -13,3 +13,7 @@ libraryDependencies ++= Seq(
   "org.webjars" %% "webjars-play" % "2.4.0-2",
   "org.webjars" % "bootstrap" % "4.0.0-alpha.6-1"
 )
+
+ivyScala := ivyScala.value map {
+  _.copy(overrideScalaVersion = true)
+}
