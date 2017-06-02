@@ -4,6 +4,7 @@ import com.avaje.ebean.Ebean;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.inject.Inject;
 import models.Quiz;
+import play.data.DynamicForm;
 import play.data.Form;
 import play.data.FormFactory;
 import play.mvc.Controller;
@@ -26,17 +27,21 @@ public class QuizzesController extends Controller {
   }
 
   public Result create() {
+    DynamicForm requestData = formFactory.form().bindFromRequest();
+    String amount = requestData.get("questionsAmount");
+    String difficulty = requestData.get("difficulty");
+
     try {
       ObjectMapper mapper = new ObjectMapper();
-      String json = service.fetch().toCompletableFuture().get();
+      String json = service.fetch(amount, difficulty).toCompletableFuture().get();
       Quiz q = mapper.readValue(json, Quiz.class);
-      System.out.println(q.getQuestions());
       q.save();
+      return redirect("/quiz/" + q.getId());
     } catch (InterruptedException | ExecutionException | IOException e) {
       e.printStackTrace();
     }
 
-    return redirect("/quiz");
+    return redirect("/");
   }
 
   public Result show(UUID id) {
