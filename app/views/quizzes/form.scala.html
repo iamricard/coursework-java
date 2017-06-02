@@ -1,5 +1,46 @@
-@()
+@(form: Form[Quiz])
 
-@main("Generate a Quiz") {
-  Nooice
-}
+  @main("Generate a Quiz") {
+    <article class="form">
+    @helper.form(action = routes.QuizzesController.create()) {
+      <section class="group">
+        <p>Choose the number of questions.</p>
+
+        <input id="a1" type="radio" name="questionsAmount" value="10" checked />
+        <label for="a1">10</label>
+        <input id="a2" type="radio" name="questionsAmount" value="20" />
+        <label for="a2">20</label>
+        <input id="a3" type="radio" name="questionsAmount" value="30" />
+        <label for="a3">30</label>
+      </section>
+
+      <section class="group">
+        <p>
+          Choose the difficulty of the questions.
+        </p>
+        <input id="d1" type="radio" name="difficulty" value="easy" />
+        <label for="d1">
+          easy
+        </label>
+        <input id="d2" type="radio" name="difficulty" value="medium" />
+        <label for="d2">
+          medium
+        </label>
+        <input id="d3" type="radio" name="difficulty" value="hard" />
+        <label for="d3">
+          hard
+        </label>
+        <input id="d4" type="radio" name="difficulty" value="mixed" checked />
+        <label for="d4">
+          mixed
+        </label>
+      </section>
+
+      <section class="group no-padding">
+        <button>
+          go
+        </button>
+      </section>
+    }
+    </article>
+  }
