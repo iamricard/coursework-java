@@ -7,11 +7,12 @@ lazy val root = (project in file(".")).enablePlugins(PlayJava, PlayEbean)
 scalaVersion := "2.11.2"
 
 libraryDependencies ++= Seq(
+  jdbc,
   javaJdbc,
   cache,
   javaWs,
-  "org.webjars" %% "webjars-play" % "2.4.0-2",
-  "org.webjars" % "bootstrap" % "4.0.0-alpha.6-1"
+  evolutions,
+  "org.postgresql" % "postgresql" % "42.1.1"
 )
 
 ivyScala := ivyScala.value map {

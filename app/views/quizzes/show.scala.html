@@ -1,0 +1,20 @@
+@(quiz: Quiz)
+
+  @main(s"Quiz ${quiz.getId}") {
+    @for((q, idx) <- quiz.getQuestions.zipWithIndex) {
+      <article class="question @(if(idx == 0) "current")">
+        <p>
+        @Html(q.getText)
+        </p>
+
+        <section class="options">
+        @for(o <- q.getOptions) {
+          <label class="option">
+            <input type="radio" name="@q.getId" value="@o.getText" />
+            @Html(o.getText)
+          </label>
+        }
+        </section>
+      </article>
+    }
+  }
