@@ -1,0 +1,82 @@
+.form {
+  display: flex;
+  position: absolute;
+  margin: 0 auto;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+
+  .group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: @spacing-l @spacing-s;
+
+    &:not(:first-child) {
+      border-top: 1px solid @medium-gray;
+    }
+  }
+
+  p {
+    flex: 1 0 100%;
+    margin-bottom: @spacing-m;
+  }
+
+  label {
+    display: inline-block;
+    line-height: 5.25rem;
+    width: 5.25rem;
+    height: 5.25rem;
+    border: 1px solid @medium-gray;
+    border-radius: 3px;
+    transition: all .2s ease-in;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: @weight-bold;
+
+    &:hover {
+      border-color: saturate(@gradient-end, 50%);
+    }
+
+  }
+
+  :checked + label {
+    color: saturate(@gradient-end, 50%);
+  }
+
+  input {
+    display: none;
+  }
+
+  form {
+    width: 100%;
+    max-width: 450px;
+    background: @white;
+    color: @dark-gray;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, .3), 3px 0 6px rgba(0, 0, 0, .3), -3px 0 6px rgba(0, 0, 0, .3);
+  }
+
+  button {
+    display: block;
+    outline: none;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(@gradient-end 10%, @gradient-start);
+    color: @white;
+    font-size: @size-xl;
+    line-height: @size-xl * 3;
+    text-transform: uppercase;
+    font-family: @font-family;
+    font-weight: @weight-light;
+    border-top-style: none;
+    border-right: 1px solid;
+    border-bottom: 1px solid;
+    border-left: 1px solid;
+    cursor: pointer;
+  }
+}

@@ -2,7 +2,10 @@ package controllers;
 
 import com.avaje.ebean.Ebean;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.inject.Inject;
 import models.Quiz;
+import play.data.Form;
+import play.data.FormFactory;
 import play.mvc.Controller;
 import play.mvc.Result;
 import services.QuizService;
@@ -14,10 +17,12 @@ import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 
 public class QuizzesController extends Controller {
+  @Inject private FormFactory formFactory;
   private QuizService service = new QuizService();
 
   public Result form() {
-    return ok(form.render());
+    Form<Quiz> quizForm = formFactory.form(Quiz.class);
+    return ok(form.render(quizForm));
   }
 
   public Result create() {
