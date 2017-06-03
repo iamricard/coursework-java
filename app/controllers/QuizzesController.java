@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.inject.Inject;
 import models.Quiz;
 import play.data.DynamicForm;
-import play.data.Form;
 import play.data.FormFactory;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -22,8 +21,7 @@ public class QuizzesController extends Controller {
   private QuizService service = new QuizService();
 
   public Result form() {
-    Form<Quiz> quizForm = formFactory.form(Quiz.class);
-    return ok(form.render(quizForm));
+    return ok(form.render());
   }
 
   public Result create() {
@@ -35,6 +33,7 @@ public class QuizzesController extends Controller {
       ObjectMapper mapper = new ObjectMapper();
       String json = service.fetch(amount, difficulty).toCompletableFuture().get();
       Quiz q = mapper.readValue(json, Quiz.class);
+      q.setDifficulty(difficulty);
       q.save();
       return redirect("/quiz/" + q.getId());
     } catch (InterruptedException | ExecutionException | IOException e) {

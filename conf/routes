@@ -7,4 +7,7 @@ GET         /quiz/new            controllers.QuizzesController.form
 POST        /quiz/create         controllers.QuizzesController.create
 GET         /quiz/:id            controllers.QuizzesController.show(id: java.util.UUID)
 
+POST        /result              controllers.QuizResultsController.create
+GET         /result/:id          controllers.QuizResultsController.show(id: java.util.UUID)
+
 GET         /assets/*file        controllers.Assets.versioned(path="/public", file: Asset)

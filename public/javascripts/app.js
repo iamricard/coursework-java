@@ -4,8 +4,7 @@ function boot() {
   app.addEventListener('click', evt => {
     const current = document.querySelector('.current')
     const previous = document.querySelector('.previous')
-
-    console.log(current)
+    const form = document.querySelector('form')
 
     if (current.contains(evt.target) && evt.target.tagName === 'INPUT') {
       const next = current.nextElementSibling
@@ -13,7 +12,7 @@ function boot() {
       current.classList.add('previous')
 
       if (previous) previous.classList.remove('previous')
-      if (!next) return
+      if (!next) form.submit()
 
       next.classList.add('current')
     }
