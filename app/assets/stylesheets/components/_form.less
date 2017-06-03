@@ -14,7 +14,6 @@
   .group {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
     padding: @spacing-l @spacing-s;
 
     &:not(:first-child) {
@@ -29,8 +28,8 @@
 
   label {
     display: inline-block;
+    flex: 1 0 50%;
     line-height: 5.25rem;
-    width: 5.25rem;
     height: 5.25rem;
     border: 1px solid @medium-gray;
     border-radius: 3px;
@@ -43,9 +42,14 @@
       border-color: saturate(@gradient-end, 70%);
     }
 
+    @media (min-width: 768px) {
+      flex: auto;
+      margin: 0 @spacing-s;
+    }
   }
 
   :checked + label {
+    border-color: saturate(@gradient-end, 70%);
     color: saturate(@gradient-end, 70%);
   }
 
@@ -54,7 +58,7 @@
   }
 
   form {
-    width: 100%;
+    width: 90%;
     max-width: 450px;
     background: @white;
     color: @dark-gray;
