@@ -1,6 +1,7 @@
 .form {
   display: flex;
   position: absolute;
+  font-size: 12px;
   margin: 0 auto;
   right: 0;
   left: 0;
@@ -29,11 +30,11 @@
 
   label {
     display: inline-block;
-    line-height: 5.25rem;
-    width: 5.25rem;
-    height: 5.25rem;
+    line-height: 4.5rem;
+    width: 4.5rem;
+    height: 4.5rem;
     border: 1px solid @medium-gray;
-    border-radius: 3px;
+    border-radius: 2px;
     transition: all .2s ease-in;
     text-transform: uppercase;
     cursor: pointer;
@@ -43,10 +44,10 @@
       border-color: saturate(@gradient-end, 70%);
     }
 
-    @media (max-width: 767px) {
-      height: 4.5rem;
-      width: 4.5rem;
-      line-height: 4.5rem;
+    @media (min-width: 768px) {
+      height: 5.25rem;
+      width: 5.25rem;
+      line-height: 5.25rem;
     }
   }
 
@@ -66,8 +67,8 @@
     color: @dark-gray;
     box-shadow: @shadow;
 
-    @media (max-width: 767px) {
-      font-size: 12px;
+    @media (max-width: 768px) {
+      font-size: 1rem;
     }
   }
 
