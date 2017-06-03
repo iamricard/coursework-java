@@ -15,6 +15,8 @@ libraryDependencies ++= Seq(
   "org.postgresql" % "postgresql" % "42.1.1"
 )
 
+javaOptions ++= Seq("-javaagent:newrelic/newrelic.jar")
+
 ivyScala := ivyScala.value map {
   _.copy(overrideScalaVersion = true)
 }
