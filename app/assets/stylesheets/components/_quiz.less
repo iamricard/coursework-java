@@ -69,14 +69,17 @@
 #exit,
 #timer {
   position: absolute;
-  top: @spacing-l;
+  z-index: 3;
 }
 
 #exit {
-  left: @spacing-l;
+  top: 0;
+  left: 0;
+  padding: @spacing-l;
 }
 
 #timer {
-  font-family: 'Source Code Pro', 'Monaco', 'Consolas', 'Ubuntu Mono', monospace;
+  top: @spacing-l;
   right: @spacing-l;
+  font-family: 'Source Code Pro', 'Monaco', 'Consolas', 'Ubuntu Mono', monospace;
 }
