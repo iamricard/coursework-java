@@ -1,6 +1,13 @@
 @(quiz: Quiz)
 
 @main(s"Quiz ${quiz.getId}") {
+  <a id="exit" href="/" data-balloon="go back" data-balloon-pos="right">
+    <i class="icon ion-close"></i>
+  </a>
+
+  <div id="timer">
+    <i class="icon ion-clock"></i> <span>--:--</span>
+  </div>
   @helper.form(action = routes.QuizResultsController.create()) {
     <input type="hidden" value="@quiz.getId" name="quiz-id" />
     @for((q, idx) <- quiz.getQuestions.zipWithIndex) {
@@ -19,5 +26,8 @@
         </section>
       </article>
     }
+
+    <script src="@routes.Assets.versioned("javascripts/quiz.js")"></script>
+    <script src="@routes.Assets.versioned("javascripts/timer.js")"></script>
   }
 }

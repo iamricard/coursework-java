@@ -53,7 +53,7 @@ public class Quiz extends Model {
 
     for (Question q : questions) {
       String a = answers.get(q.getId().toString());
-      if (a.equals(q.getCorrectAnswer())) score += 1;
+      if (a != null && a.equals(q.getCorrectAnswer())) score += 1;
     }
 
     return score;
