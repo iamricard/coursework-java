@@ -1,0 +1,7 @@
+@(result: QuizResult)
+
+@main(s"Result for ${result.getId}") {
+  <article class="quiz-result">
+    <span>@result.getPercentage%</span>
+  </article>
+}

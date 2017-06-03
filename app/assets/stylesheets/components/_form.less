@@ -40,13 +40,13 @@
     font-weight: @weight-bold;
 
     &:hover {
-      border-color: saturate(@gradient-end, 50%);
+      border-color: saturate(@gradient-end, 70%);
     }
 
   }
 
   :checked + label {
-    color: saturate(@gradient-end, 50%);
+    color: saturate(@gradient-end, 70%);
   }
 
   input {
@@ -58,7 +58,7 @@
     max-width: 450px;
     background: @white;
     color: @dark-gray;
-    box-shadow: 0 8px 8px rgba(0, 0, 0, .3), 3px 0 6px rgba(0, 0, 0, .3), -3px 0 6px rgba(0, 0, 0, .3);
+    box-shadow: @shadow;
   }
 
   button {
