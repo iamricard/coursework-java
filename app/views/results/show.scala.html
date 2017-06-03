@@ -2,6 +2,26 @@
 
 @main(s"Result for ${result.getId}") {
   <article class="quiz-result">
-    <span>@result.getPercentage%</span>
+    <h1 class="title">
+      Your score is...
+    </h1>
+
+    <span class="score">
+      @result.getPercentage%
+    </span>
+
+    <div class="actions">
+      <a class="action" data-balloon="retake quiz" href="/quiz/@result.getQuiz.getId">
+        <i class="icon ion-android-refresh"></i>
+      </a>
+
+      <a class="action" data-balloon="coming soon" href="">
+        <i class="action icon ion-android-share-alt"></i>
+      </a>
+
+      <a class="action" data-balloon="new quiz" href="/">
+        <i class="icon ion-plus"></i>
+      </a>
+    </div>
   </article>
 }
