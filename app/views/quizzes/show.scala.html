@@ -1,6 +1,8 @@
 @(quiz: Quiz)
 
-  @main(s"Quiz ${quiz.getId}") {
+@main(s"Quiz ${quiz.getId}") {
+  @helper.form(action = routes.QuizResultsController.create()) {
+    <input type="hidden" value="@quiz.getId" name="quiz-id" />
     @for((q, idx) <- quiz.getQuestions.zipWithIndex) {
       <article class="question @(if(idx == 0) "current")">
         <p>
@@ -18,3 +20,4 @@
       </article>
     }
   }
+}

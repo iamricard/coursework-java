@@ -3,6 +3,7 @@ package models;
 import com.avaje.ebean.Model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import play.data.DynamicForm;
 
 import javax.persistence.*;
 import java.util.List;
@@ -18,9 +19,10 @@ public class Quiz extends Model {
   @JsonProperty("results")
   private List<Question> questions;
 
-  private String difficulty = "Mixed";
+  @OneToMany(mappedBy = "quiz", cascade = CascadeType.ALL)
+  private List<QuizResult> quizResults;
 
-  public static Finder<Long, Quiz> find = new Finder<>(Quiz.class);
+  private String difficulty;
 
   public UUID getId() {
     return id;
@@ -44,5 +46,24 @@ public class Quiz extends Model {
 
   public void setDifficulty(String difficulty) {
     this.difficulty = difficulty;
+  }
+
+  public int computeScore(DynamicForm answers) {
+    int score = 0;
+
+    for (Question q : questions) {
+      String a = answers.get(q.getId().toString());
+      if (a.equals(q.getCorrectAnswer())) score += 1;
+    }
+
+    return score;
+  }
+
+  public List<QuizResult> getQuizResults() {
+    return quizResults;
+  }
+
+  public void setQuizResults(List<QuizResult> quizResults) {
+    this.quizResults = quizResults;
   }
 }
