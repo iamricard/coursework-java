@@ -21,11 +21,13 @@ public class QuizResultsController extends Controller {
     r.setScore(q.computeScore(requestData));
     r.setQuiz(q);
     r.save();
-    return ok("yay!");
+
+    return redirect("/result/" + r.getId());
   }
 
   public Result show(UUID id) {
-    //
-    return ok("yay!");
+    QuizResult r = Ebean.find(QuizResult.class, id);
+
+    return ok(views.html.results.show.render(r));
   }
 }

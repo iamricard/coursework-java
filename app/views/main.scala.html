@@ -1,4 +1,4 @@
-@(title: String, mainClass: String = "")(questions: Html)
+@(title: String, mainClass: String = "")(content: Html)
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +11,7 @@
   </head>
   <body>
     <main id="app" class="container @mainClass">
-    @questions
+    @content
     </main>
 
     <script src="@routes.Assets.versioned("javascripts/app.js")"></script>

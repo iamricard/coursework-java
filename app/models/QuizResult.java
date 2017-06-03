@@ -35,6 +35,10 @@ public class QuizResult extends Model {
     return score;
   }
 
+  public double getPercentage() {
+    return ((double) score / (double) quiz.getQuestions().size()) * 100;
+  }
+
   public void setScore(int score) {
     this.score = score;
   }

@@ -1,0 +1,25 @@
+.quiz-result {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: saturate(@gradient-end, 50%);
+  background: @white;
+  box-shadow: @shadow;
+  width: 90%;
+  max-width: 450px;
+  height: 90%;
+  max-height: 450px;
+  font-size: @size-xxl;
+  font-weight: normal;
+
+  > span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 50%;
+    padding: @spacing-l;
+    border-radius: 100%;
+    border: 3px solid saturate(@gradient-end, 35%);
+  }
+}
