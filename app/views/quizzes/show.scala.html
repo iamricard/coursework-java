@@ -13,7 +13,7 @@
     @for((q, idx) <- quiz.getQuestions.zipWithIndex) {
       <article class="question @(if(idx == 0) "current")">
         <p>
-        @Html(q.getText)
+          @(idx + 1) / @quiz.getQuestions.size &mdash; @Html(q.getText)
         </p>
 
         <section class="options">
