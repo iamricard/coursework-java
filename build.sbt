@@ -2,9 +2,9 @@ name := """coursework-java"""
 
 version := "1.0.0"
 
-lazy val root = (project in file(".")).enablePlugins(PlayJava, PlayEbean)
+lazy val root = (project in file(".")).enablePlugins(PlayJava, PlayEbean, SbtWeb)
 
-scalaVersion := "2.11.2"
+scalaVersion := "2.11.7"
 
 libraryDependencies ++= Seq(
   jdbc,
@@ -16,7 +16,3 @@ libraryDependencies ++= Seq(
 )
 
 javaOptions ++= Seq("-javaagent:newrelic/newrelic.jar")
-
-ivyScala := ivyScala.value map {
-  _.copy(overrideScalaVersion = true)
-}
