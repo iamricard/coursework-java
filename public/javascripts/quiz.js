@@ -18,4 +18,16 @@ function boot() {
   })
 }
 
+function skipQ(el) {
+  const question = el.parentNode
+  const nextQuestion = question.nextElementSibling
+  const form = question.parentNode
+
+  question.classList.remove('current')
+  question.removeChild(el)
+  nextQuestion.classList.add('current')
+
+  form.appendChild(question)
+}
+
 boot()
