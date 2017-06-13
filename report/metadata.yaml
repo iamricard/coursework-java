@@ -1,0 +1,35 @@
+---
+  author: "Ricard Solé Casas"
+  institute:
+    - Google UK
+    - Ada National College for Digital Skills
+  date: \today
+  title: "Programming - Part I"
+  toc: true
+  lang: "en"
+  papersize: "a4"
+  documentclass: "report"
+  geometry: margin=1in
+  subparagraph: yes
+  links-as-notes: true
+  include-before:
+  - \vspace*{\fill}
+  - \section*{Foreword}
+  - The source code for this report and app can be found on
+    [Github](https://github.com/rcsole/coursework-java). The live version of the
+    app itself is online at http://quiz.rsole.me.
+  - Some of the decisions taken in building this app do not follow the original
+    suggested guidelines. The UI is a web frontend, but all the business logic
+    is handled by the server-side via Java.
+  - \section*{Declaration}
+  - I confirm that the submitted coursework is my own work and that all material
+    attributed to others (whether published or unpublished) has been clearly
+    identified and fully acknowledged and referred to original sources. I agree
+    that the College has the right to submit my work to the plagiarism detection
+    service. TurnitinUK for originality checks.
+  - \section*{Acknowledgements}
+  - I'd like to thank my partner Shannon for her continued support and
+    challenges that help me grow, both professionally and personally. I would
+    also like to thank all of you who also helped me get here.
+  - \vspace*{\fill}
+---
