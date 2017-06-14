@@ -114,6 +114,34 @@ would also like to thank all of you who also helped me get here.
 \setcounter{tocdepth}{2}
 \tableofcontents
 }
+\chapter{Design Choices}\label{design-choices}
+
+I've made some choices for this solution that require some
+justification. The project guidelines suggested using the Java
+\href{https://www.wikiwand.com/en/Swing_(Java)}{Swing} framework, which
+was meant to be replaced by
+\href{https://www.wikiwand.com/en/JavaFX}{JavaFX}. However, both
+technologies are quite outdated. The former is partially deprecated and
+the latter doesn't appear to be well maintained, documentation is
+scarce, and Oracle has discontinued support for the editor tools. After
+some research I came to the conclusion that, as of June 2017, the
+community has pivoted towards using Java for the business logic and
+persistence through a web server, while leaving the templating and UI
+sections to a much more mature and seasoned technology: the HTML, CSS,
+and JavaScript triad.
+
+In this particular project, the server is built on the shoulders of the
+Java bindings to the \href{https://playframework.com}{Play} framework
+(see footnote for more information). The persistence layer is built on
+Java's \href{http://ebean-orm.github.io/}{Ebean} targeting a
+\href{https://www.postgresql.org/}{PostgreSQL} backend. For deployment,
+I used \href{https://heroku.com}{Heroku} and integrated it with
+Github\footnote{http://www.giphy.com/gifs/3ohzdEZt9v5mq8oAsE} for
+automated deployments.
+
+In the following chapter I will elaborate on the core pieces of the
+application.
+
 \chapter{Overview}\label{overview}
 
 Project is setup using the Java \href{https://playframework.com}{Play}
