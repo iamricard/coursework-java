@@ -192,13 +192,56 @@ implementation.
 
 \section{Services}\label{services}
 
+From \href{https://softwareengineering.stackexchange.com/a/211724}{SWE
+SX}:
+
+\begin{quote}
+\emph{Services normally return DTOs in large applications or domain
+models directly in smaller applications. DTOs normally means more work,
+but better separation of concerns. The typical flow is: Controller calls
+service → Service returns an object (be it a DTO, domain model or
+something else) → Controller maps DTO/domain model to a view model}.
+\end{quote}
+
 \subsection{QuizService}\label{quizservice}
+
+The service layer in this case abstracts the added complexity of calling
+the \href{https://opentdb.com/}{Open Trivia DB} API. It makes a request
+to the API with modifiers such as \texttt{String\ amount} and
+\texttt{String\ difficulty}, and then returns a
+\protect\hyperlink{quiz}{\texttt{Quiz}} Ebean.
+
+See \href{https://git.io/vHdkc}{services/QuizService.java} for
+implementation.
 
 \section{Controllers}\label{controllers}
 
+From Wikipedia:
+
+\begin{quote}
+\emph{The controller accepts input and converts it to commands for the
+model or view.}
+\end{quote}
+
 \subsection{QuizResultsController}\label{quizresultscontroller}
 
+This controller handles requests that ask for a specific result, as well
+as creating new results. The former is via the
+\texttt{Result\ show(UUID\ id)} method; the latter is via the
+\texttt{Result\ create()} method.
+
+See \href{https://git.io/vHdks}{controllers/QuizResultsController.java}
+for implementation.
+
 \subsection{QuizzesController}\label{quizzescontroller}
+
+This controller is the meatiest one. It renders a form with
+\texttt{Result\ form()}, handles the result of said form in
+\texttt{CompletionStage\textless{}Result\textgreater{}\ create()} and
+displays an existing \texttt{Quiz} via \texttt{Result\ show(UUID\ id)}.
+
+See \href{https://git.io/vHdkn}{controllers/QuizzesController.java} for
+implementation.
 
 \chapter{Test plan}\label{test-plan}
 

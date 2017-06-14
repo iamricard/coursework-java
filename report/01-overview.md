@@ -59,13 +59,45 @@ See [models/QuizResult.java] for implementation.
 
 ## Services
 
+From [SWE SX]:
+
+> _Services normally return DTOs in large applications or domain models directly
+> in smaller applications. DTOs normally means more work, but better separation
+> of concerns. The typical flow is: Controller calls service →
+> Service returns an object (be it a DTO, domain model or something else) →
+> Controller maps DTO/domain model to a view model_.
+
 ### QuizService
+
+The service layer in this case abstracts the added complexity of calling the
+[Open Trivia DB] API. It makes a request to the API with modifiers such as
+`String amount` and `String difficulty`, and then returns a [`Quiz`](#quiz)
+Ebean.
+
+See [services/QuizService.java] for implementation.
 
 ## Controllers
 
+From Wikipedia:
+
+> _The controller accepts input and converts it to commands for the model or
+> view._
+
 ### QuizResultsController
 
+This controller handles requests that ask for a specific result, as well as
+creating new results. The former is via the `Result show(UUID id)` method; the
+latter is via the `Result create()` method.
+
+See [controllers/QuizResultsController.java] for implementation.
+
 ### QuizzesController
+
+This controller is the meatiest one. It renders a form with `Result form()`,
+handles the result of said form in `CompletionStage<Result> create()` and
+displays an existing `Quiz` via `Result show(UUID id)`.
+
+See [controllers/QuizzesController.java] for implementation.
 
 [Play]: https://playframework.com
 [MVC]: https://www.wikiwand.com/en/Model%E2%80%93view%E2%80%93controller
@@ -76,3 +108,8 @@ See [models/QuizResult.java] for implementation.
 [models/Question.java]: https://git.io/vHde6
 [models/Quiz.java]: https://git.io/vHdvZ
 [models/QuizResult.java]: https://git.io/vHdvn
+[SWE SX]: https://softwareengineering.stackexchange.com/a/211724
+[Open Trivia DB]: https://opentdb.com/
+[services/QuizService.java]: https://git.io/vHdkc
+[controllers/QuizResultsController.java]: https://git.io/vHdks
+[controllers/QuizzesController.java]: https://git.io/vHdkn
