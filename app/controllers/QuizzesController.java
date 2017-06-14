@@ -1,7 +1,6 @@
 package controllers;
 
 import com.avaje.ebean.Ebean;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.inject.Inject;
 import models.Quiz;
 import play.data.DynamicForm;
@@ -12,9 +11,8 @@ import services.QuizService;
 import views.html.quizzes.form;
 import views.html.quizzes.show;
 
-import java.io.IOException;
 import java.util.UUID;
-import java.util.concurrent.ExecutionException;
+import java.util.concurrent.CompletionStage;
 
 public class QuizzesController extends Controller {
   @Inject private FormFactory formFactory;
@@ -24,23 +22,19 @@ public class QuizzesController extends Controller {
     return ok(form.render());
   }
 
-  public Result create() {
+  public CompletionStage<Result> create() {
     DynamicForm requestData = formFactory.form().bindFromRequest();
     String amount = requestData.get("questionsAmount");
     String difficulty = requestData.get("difficulty");
 
-    try {
-      ObjectMapper mapper = new ObjectMapper();
-      String json = service.fetch(amount, difficulty).toCompletableFuture().get();
-      Quiz q = mapper.readValue(json, Quiz.class);
-      q.setDifficulty(difficulty);
-      q.save();
-      return redirect("/quiz/" + q.getId());
-    } catch (InterruptedException | ExecutionException | IOException e) {
-      e.printStackTrace();
-    }
+    return service
+        .fetch(amount, difficulty)
+        .thenApply(
+            (Quiz q) -> {
+              if (q.getQuestions().size() == 0) return redirect("/");
 
-    return redirect("/");
+              return redirect("/quiz/" + q.getId());
+            });
   }
 
   public Result show(UUID id) {
