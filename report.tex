@@ -123,11 +123,72 @@ pattern.
 
 \section{Models}\label{models}
 
+From Wikipedia:
+
+\begin{quote}
+\emph{The model is the central component of the pattern. It expresses
+the application's behavior in terms of the problem domain, independent
+of the user interface. It directly manages the data, logic and rules of
+the application.}
+\end{quote}
+
+All the models used by this application are stored in
+\href{https://www.postgresql.org/}{PostgreSQL}. The bindings are done
+through
+\href{https://www.playframework.com/documentation/2.5.x/JavaEbean}{PlayEbean}.
+
 \subsection{Option}\label{option}
 
-\subsection{Question}\label{question}
+\texttt{Option} is the smallest model. It has a
+\href{https://www.wikiwand.com/en/One-to-many_(data_model)}{one-to-many}
+relationship to \protect\hyperlink{question}{\texttt{Question}}, where
+one \texttt{Question} can have \texttt{n\ Option}s, and each
+\texttt{Option} belongs to \texttt{1\ Question}.
+
+In essence it's an alias to a \texttt{String} type, the only difference
+is that \texttt{Option} has a \texttt{Long\ id} and a
+\texttt{Question\ question}.
+
+See \href{https://git.io/vHdem}{models/Option.java} for implementation.
+
+\hypertarget{question}{\subsection{Question}\label{question}}
+
+\texttt{Question} is, arguably, the meat of the application. It holds
+\emph{many} \texttt{Option}s as a
+\texttt{List\textless{}Option\textgreater{}}, along with other
+parameters like difficulty, type, and category or the \texttt{Quiz} it
+belongs to. Like \texttt{Option}, \texttt{Question} holds a
+\href{https://www.wikiwand.com/en/One-to-many_(data_model)}{one-to-many}
+relationship to \protect\hyperlink{quiz}{\texttt{Quiz}}. Except in this
+case \texttt{n\ Question}s belong to \texttt{1\ Quiz}.
+
+See \href{https://git.io/vHde6}{models/Question.java} for
+implementation.
+
+\hypertarget{quiz}{\subsection{Quiz}\label{quiz}}
+
+This is the model that is actually used by other parts of the
+application. The rest are intermediary models to store data in a way
+that makes it easier to manipulate. \texttt{Quiz} owns two different
+models, \texttt{QuizResult} and \texttt{Question}. Any \texttt{Quiz} may
+have any number of \texttt{QuizResult}s and \texttt{Question}s.
+
+It also has a \texttt{String\ difficulty} value which ranges from
+\emph{easy} to \emph{hard}, or \emph{mixed}. Also provides a method int
+\texttt{computeScore(DynamicForm\ answers)} to compute the score from a
+form submission.
+
+See \href{https://git.io/vHdvZ}{models/Quiz.java} for implementation.
 
 \subsection{QuizResult}\label{quizresult}
+
+\texttt{QuizResult} is how the application stores the return value of
+\texttt{int\ computeScore(DynamicForm\ answers)} in \texttt{Quiz}. This
+is to allow sharing and retaking the \texttt{Quiz}, hence the belonging
+relationship.
+
+See \href{https://git.io/vHdvn}{models/QuizResult.java} for
+implementation.
 
 \section{Services}\label{services}
 
