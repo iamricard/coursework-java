@@ -139,6 +139,17 @@ I used \href{https://heroku.com}{Heroku} and integrated it with
 Github\footnote{http://www.giphy.com/gifs/3ohzdEZt9v5mq8oAsE} for
 automated deployments.
 
+I've also decided against displaying which questions were answered
+incorrectly. The reason for that is that it would serve as
+\emph{cheating}. One would just have to retake the entire Quiz and know
+which ones they have to actually change. Hiding which answers were
+incorrectly answered makes, in my opinion, for a more interesting game
+overall.
+
+Likewise I've also decided against prompting the user when skipping a
+question. I think that prompting the user \textbf{every time} they want
+to skip ahead involves too many clicks.
+
 In the following chapter I will elaborate on the core pieces of the
 application.
 
@@ -271,7 +282,26 @@ displays an existing \texttt{Quiz} via \texttt{Result\ show(UUID\ id)}.
 See \href{https://git.io/vHdkn}{controllers/QuizzesController.java} for
 implementation.
 
+\chapter{Critical Evaluation}\label{critical-evaluation}
+
+This application could be improved in the following aspects:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{ManyToMany} relationship between \texttt{Quiz} and
+  \texttt{Question} to avoid duplicated \texttt{Question} entries.
+\item
+  Display difficulty per question.
+\item
+  Keyboard shortcuts for UI.
+\item
+  Variable time length depending on the difficulty of each question.
+\end{itemize}
+
 \chapter{Test plan}\label{test-plan}
+
+\section{Manual tests}\label{manual-tests}
 
 \begin{longtable}[]{@{}llccc@{}}
 \toprule
@@ -383,6 +413,11 @@ See figure \ref{fig:4}\strut
 \end{minipage}\tabularnewline
 \bottomrule
 \end{longtable}
+
+\section{Automated tests}\label{automated-tests}
+
+See https://github.com/rcsole/coursework-java/tree/master/test for a far
+more complete suite of tests.
 
 \begin{figure}
 \centering

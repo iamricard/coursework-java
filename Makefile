@@ -23,4 +23,4 @@ pdf:
 	xelatex -shell-escape report.tex
 
 clean:
-	-@rm -f $(TARGET) report*
+	-@rm -f $(TARGET) report.*

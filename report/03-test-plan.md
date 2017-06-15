@@ -1,5 +1,7 @@
 # Test plan
 
+## Manual tests
+
 --------------------------------------------------------------------------------
 *Test*         *Method*        *Expected*        *Actual*        *Evidence*
 -------------- ------------- ----------------- --------------- -----------------
@@ -47,6 +49,11 @@ displayed as   quiz           displayed upon                   \ref{fig:4}
 a percentage                  finishing the
                               quiz
 --------------------------------------------------------------------------------
+
+## Automated tests
+
+See https://github.com/rcsole/coursework-java/tree/master/test for a far more
+complete suite of tests.
 
 ![10 Questions\label{fig:1}](report/images/00.png)
 

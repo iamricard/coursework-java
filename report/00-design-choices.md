@@ -17,6 +17,16 @@ persistence layer is built on Java's [Ebean] targeting a [PostgreSQL] backend.
 For deployment, I used [Heroku] and integrated it with Github[^1] for automated
 deployments.
 
+I've also decided against displaying which questions were answered incorrectly.
+The reason for that is that it would serve as _cheating_. One would just have to
+retake the entire Quiz and know which ones they have to actually change. Hiding
+which answers were incorrectly answered makes, in my opinion, for a more
+interesting game overall.
+
+Likewise I've also decided against prompting the user when skipping a question.
+I think that prompting the user **every time** they want to skip ahead involves
+too many clicks.
+
 In the following chapter I will elaborate on the core pieces of the application.
 
 [Swing]: https://www.wikiwand.com/en/Swing_(Java)
