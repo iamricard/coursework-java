@@ -11,8 +11,10 @@ libraryDependencies ++= Seq(
   javaJdbc,
   cache,
   javaWs,
-  evolutions,
-  "org.postgresql" % "postgresql" % "42.1.1"
+  evolutions
 )
+
+libraryDependencies += "org.hamcrest" % "hamcrest-all" % "1.3"
+libraryDependencies += "org.postgresql" % "postgresql" % "42.1.1"
 
 javaOptions ++= Seq("-javaagent:newrelic/newrelic.jar")
